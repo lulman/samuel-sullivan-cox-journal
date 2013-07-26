@@ -133,6 +133,8 @@ the body tags of the Web page. -->
                   href="SSCoxJournal-SplitView.html"
                   target="self"> MS Image/Text</a>
                <br/>
+               <br/>
+               26 July 2013: This edition is currently being updated. Please excuse the mess.
             </p>
             <hr/>
 
