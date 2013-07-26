@@ -168,11 +168,7 @@ the body tags of the Web page. -->
             <hr/>
             <strong>Textual Annotations</strong>
             <xsl:for-each select="//app">
-               <p class="hang"><a>
-                     <xsl:attribute name="name">
-                        <xsl:value-of select="@xml:id"/>
-                     </xsl:attribute>
-                  </a>
+               <p class="hang"><a><xsl:attribute name="name"><xsl:value-of select="@xml:id"/></xsl:attribute></a>
                   <xsl:number count="//app" format="a" level="any"/>:<br/><em><xsl:value-of
                         select="lem/@wit"/>:&#xA0;</em>
                   <xsl:apply-templates select="lem"/><br/>
@@ -319,7 +315,7 @@ the body tags of the Web page. -->
    <!-- Critical Apparatus -->
    <xsl:template match="app">
       <xsl:apply-templates select="lem"/>&#xA0;<a>
-         <xsl:attribute name="href">#<xsl:value-of select="@id"/></xsl:attribute>
+         <xsl:attribute name="href">#<xsl:value-of select="@xml:id"/></xsl:attribute>
          <sup>
             <xsl:number format="a" level="any" count="app"/>
          </sup>
