@@ -141,33 +141,21 @@ the body tags of the Web page. -->
             <br/>
             <hr/>
             <strong>Explanatory Annotations</strong>
-            <xsl:for-each select="//text//note[@id]">
+            <xsl:for-each select="//text//note[@xml:id]">
                <xsl:choose>
                   <xsl:when test="position()>=100">
-                     <p class="hang35"><a>
-                           <xsl:attribute name="name">
-                              <xsl:value-of select="@id"/>
-                           </xsl:attribute>
-                        </a>
-                        <xsl:number count="//text//note[@id]" level="any"
+                     <p class="hang35"><a><xsl:attribute name="name"><xsl:value-of select="@xml:id"/></xsl:attribute></a>
+                        <xsl:number count="//text//note[@xml:id]" level="any"
                         />.&#xA0;<xsl:apply-templates/></p>
                   </xsl:when>
                   <xsl:when test="position()>=10">
-                     <p class="hang25"><a>
-                           <xsl:attribute name="name">
-                              <xsl:value-of select="@id"/>
-                           </xsl:attribute>
-                        </a>
-                        <xsl:number count="//text//note[@id]" level="any"
+                     <p class="hang25"><a><xsl:attribute name="name"><xsl:value-of select="@xml:id"/></xsl:attribute></a>
+                        <xsl:number count="//text//note[@xml:id]" level="any"
                         />.&#xA0;<xsl:apply-templates/></p>
                   </xsl:when>
                   <xsl:otherwise>
-                     <p class="hang15"><a>
-                           <xsl:attribute name="name">
-                              <xsl:value-of select="@id"/>
-                           </xsl:attribute>
-                        </a>
-                        <xsl:number count="//text//note[@id]" level="any"
+                     <p class="hang15"><a><xsl:attribute name="name"><xsl:value-of select="@xml:id"/></xsl:attribute></a>
+                        <xsl:number count="//text//note[@xml:id]" level="any"
                         />.&#xA0;<xsl:apply-templates/></p>
                   </xsl:otherwise>
                </xsl:choose>
@@ -180,7 +168,7 @@ the body tags of the Web page. -->
             <xsl:for-each select="//app">
                <p class="hang"><a>
                      <xsl:attribute name="name">
-                        <xsl:value-of select="@id"/>
+                        <xsl:value-of select="@xml:id"/>
                      </xsl:attribute>
                   </a>
                   <xsl:number count="//app" format="a" level="any"/>:<br/><em><xsl:value-of
@@ -248,7 +236,7 @@ the body tags of the Web page. -->
 
    <xsl:template match="pb">
       <hr/>
-            <br/>
+            <!--<br/>
             <span class="pagebreak"> [Page&#xA0;-&#xA0;<xsl:number count="pb" format="1" level="any"
                />&#xA0; (<a><xsl:attribute name="HREF">
                  <xsl:value-of select="@facs"/>  
@@ -256,7 +244,7 @@ the body tags of the Web page. -->
                <xsl:attribute name="target">
                   _blank
                </xsl:attribute>
-                  Click to open page image in a new window</a>)] </span>
+                  Click to open page image in a new window</a>)] </span>-->
             <br/>
             <span class="pagebreak"> [Page&#xA0;-&#xA0;<xsl:number count="pb" format="1" level="any"
                />&#xA0; (<a><xsl:attribute name="HREF"
@@ -520,14 +508,14 @@ the body tags of the Web page. -->
    </xsl:template>
    <xsl:template match="note[@target]">
       <a>
-         <xsl:attribute name="href">#<xsl:value-of select="@target"/></xsl:attribute>
+         <xsl:attribute name="href"><xsl:value-of select="@target"/></xsl:attribute>
          <sup>
             <xsl:number level="any" count="note[@target]"/>
             <xsl:apply-templates/>
          </sup>
       </a>
    </xsl:template>
-   <xsl:template match="note[@id]"/>
+   <xsl:template match="note[@xml:id]"/>
    <xsl:template match="xref">
       <xsl:choose>
          <xsl:when test="parent=figDesc"/>
