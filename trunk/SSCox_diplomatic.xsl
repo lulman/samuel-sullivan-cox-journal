@@ -1,7 +1,14 @@
-<?xml version="1.0"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
-   <xsl:output method="html" version="1.0" encoding="iso-8859-1" indent="no" media-type="text/html"/>
-
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+      xmlns:tei="http://www.tei-c.org/ns/1.0" version="2.0" xpath-default-namespace="http://www.tei-c.org/ns/1.0">
+      <xd:doc xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl" scope="stylesheet">
+         <xd:desc>
+            <xd:p><xd:b>Created on:</xd:b> 26 July 2013</xd:p>
+            <xd:p><xd:b>Author:</xd:b>H. Lewis Ulman</xd:p>
+            <xd:p/>
+         </xd:desc>
+      </xd:doc>
+      
    <!-- This style sheet is divided into the following sections:
    
    HTML WRAPPER
@@ -241,27 +248,21 @@ the body tags of the Web page. -->
 
    <xsl:template match="pb">
       <hr/>
-      <xsl:choose>
-         <xsl:when test="@audiostart">
             <br/>
             <span class="pagebreak"> [Page&#xA0;-&#xA0;<xsl:number count="pb" format="1" level="any"
-               />&#xA0; (<a><xsl:attribute name="HREF"
-                        >http://people.cohums.ohio-state.edu/ulman1/SSCoxJournal/CoxZoomPlusAudio_JS.cfm?file=<xsl:value-of
-                        select="@mmid"/>.jpg&amp;audiostart=<xsl:value-of select="@audiostart"
-                        />&amp;audioend=<xsl:value-of select="@audioend"
-                     /></xsl:attribute><xsl:attribute name="target">top</xsl:attribute>Click to open
-                  page image and audio file in a new window</a>)] </span>
-         </xsl:when>
-         <xsl:otherwise>
+               />&#xA0; (<a><xsl:attribute name="HREF">
+                 <xsl:value-of select="@facs"/>  
+               </xsl:attribute>
+               <xsl:attribute name="target">
+                  _blank
+               </xsl:attribute>
+                  Click to open page image in a new window</a>)] </span>
             <br/>
             <span class="pagebreak"> [Page&#xA0;-&#xA0;<xsl:number count="pb" format="1" level="any"
                />&#xA0; (<a><xsl:attribute name="HREF"
                         >http://people.cohums.ohio-state.edu/ulman1/SSCoxJournal/CoxZoom.cfm?file=<xsl:value-of
-                        select="@mmid"/>.jpg</xsl:attribute><xsl:attribute name="target"
-                     >top</xsl:attribute>click to open page image in a new window</a>)] </span>
-         </xsl:otherwise>
-      </xsl:choose>
-
+                        select="@n"/>.jpg</xsl:attribute><xsl:attribute name="target"
+                     >top</xsl:attribute>Click to open zoomable page image in a new window (may not be available on all systems).</a>)] </span>
    </xsl:template>
    <xsl:template match="lb">
       <br/>
