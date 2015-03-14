@@ -1,0 +1,1 @@
+Documentary edition of Samuel Sullivan Cox's 1851 journal of a trip to Europe and the Orient, built using the Text Encoding Initiative P5 Guidelines.
